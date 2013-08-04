@@ -13,6 +13,12 @@ public class Tehtavakokoelma implements Tehtavatehdas {
 
     private final Random random = new Random();
     
+    /**
+     * Luo Tehtavakokoelman, johon kuuluvat annetut tehtävätehtaat.
+     * @param lahteet Tehtavatehdas-instanssit, joiden joukosta tehtävä
+     * kulloinkin valitaan. Lähteitä on oltava vähintään yksi.
+     * @throws IndexOutOfBoundsException Jos ei annettu yhtään lähdettä.
+     */
     public Tehtavakokoelma(Tehtavatehdas... lahteet) {
         if(lahteet.length == 0)
             throw new IndexOutOfBoundsException("Parametrina on annettava ainakin yksi Tehtavatehdas.");

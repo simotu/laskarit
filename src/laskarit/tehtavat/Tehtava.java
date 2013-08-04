@@ -9,8 +9,18 @@ import laskarit.muotoilu.Esitys;
  * @author simo
  */
 public interface Tehtava {
+    /**
+     * annaKysymys-metodi palauttaa kyseisen tehtävän kysymysosan.
+     * @return Esitys-instanssi, joka kuvaa tehtävän kysymystä.
+     */
     public Esitys annaKysymys();
     
+    /**
+     * tarkistaVastaus-metodi tarkistaa, kelpaako annettu vastaus
+     * vastaukseksi tehtävään.
+     * @param vastaus Vastausehdotus
+     * @return Tieto siitä, kelpasiko vastaus.
+     */
     public boolean tarkistaVastaus(String vastaus);
     
 }

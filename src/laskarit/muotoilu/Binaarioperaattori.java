@@ -1,6 +1,9 @@
 package laskarit.muotoilu;
 
 /**
+ * Binaarioperaattori on Esitys, joka kuvaa binääristä operaattoria,
+ * jossa annettu symboli yhdistää kahta Esitys-instanssia, jotka ovat
+ * ensimmäinen ja toinen parametri.
  *
  * @author simo
  */
@@ -12,6 +15,12 @@ public class Binaarioperaattori implements Esitys {
 
     private final String operaattorisymboli;
 
+    /**
+     *
+     * @param eka Toinen parametri
+     * @param toka Ensimmäinen parametri
+     * @param operaattorisymboli Operaation symboli
+     */
     public Binaarioperaattori(Esitys eka, Esitys toka, String operaattorisymboli) {
         this.eka = eka;
         this.toka = toka;
