@@ -17,7 +17,7 @@ public class Teksti implements Esitys {
     }
 
     @Override
-    public String toString() {
+    public String toString(Esitys context) {
         return teksti;
     }
 

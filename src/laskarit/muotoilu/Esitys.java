@@ -10,7 +10,6 @@ public interface Esitys {
      * Palauttaa esityksen merkkijonoksi muotoiltuna.
      * @return Esityksen merkkijonoesitys.
      */
-    @Override
-    public String toString();
+    public String toString(Esitys context);
 
 }
