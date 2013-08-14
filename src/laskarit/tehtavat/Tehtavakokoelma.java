@@ -3,8 +3,8 @@ package laskarit.tehtavat;
 import java.util.Random;
 
 /**
- *
- *
+ * Tehtävätehdas, joka antaa satunnaisesti tehtäviä annetusta joukosta
+ * tehtävätehtaita.
  * @author simo
  */
 public class Tehtavakokoelma implements Tehtavatehdas {
