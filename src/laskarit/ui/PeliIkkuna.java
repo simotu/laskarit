@@ -5,15 +5,17 @@
 package laskarit.ui;
 
 import laskarit.tehtavat.KaikkiTehtavat;
+import laskarit.tehtavat.Kertolaskarit;
 import laskarit.tehtavat.Tehtava;
 import laskarit.tehtavat.Tehtavatehdas;
+import laskarit.tehtavat.Yhteenlaskarit;
 
 /**
  *
  * @author simo
  */
 public class PeliIkkuna extends javax.swing.JFrame {
-    private final Pelipaneli pelipaneli;
+    private Pelipaneli pelipaneli;
 
     private Tehtavatehdas tehtavat;
     private Tehtava tehtava;
@@ -23,8 +25,7 @@ public class PeliIkkuna extends javax.swing.JFrame {
      */
     public PeliIkkuna() {
         initComponents();
-        pelipaneli = new Pelipaneli(this);
-        aloitaPeli();
+        aloitaPeli(new Yhteenlaskarit(10));
     }
 
     /**
@@ -44,6 +45,7 @@ public class PeliIkkuna extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Laskarit");
         setMinimumSize(new java.awt.Dimension(500, 300));
+        setResizable(false);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.PAGE_AXIS));
         getContentPane().add(vaihtuvaPaneli);
 
@@ -62,7 +64,7 @@ public class PeliIkkuna extends javax.swing.JFrame {
 
         setJMenuBar(menuBar);
 
-        setBounds(0, 0, 595, 404);
+        setBounds(0, 0, 532, 307);
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuItemLopetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemLopetaActionPerformed
@@ -115,25 +117,10 @@ public class PeliIkkuna extends javax.swing.JFrame {
     private javax.swing.JPanel vaihtuvaPaneli;
     // End of variables declaration//GEN-END:variables
 
-    private void aloitaPeli() {
+    private void aloitaPeli(Tehtavatehdas peli) {
         vaihtuvaPaneli.removeAll();
+        pelipaneli = new Pelipaneli(this, peli);
         vaihtuvaPaneli.add(pelipaneli);
-        tehtavat = new KaikkiTehtavat();
-        uusiKysymys();
     }
 
-    void vastausAnnettu(String vastaus) {
-        if(tehtava.tarkistaVastaus(vastaus)) {
-            uusiKysymys();
-        }
-        else {
-            pelipaneli.vaaraVastaus();
-        }
-
-    }
-
-    private void uusiKysymys() {
-        tehtava = tehtavat.annaTehtava();
-        pelipaneli.uusiKysymys(tehtava.annaKysymys());
-    }
 }

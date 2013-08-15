@@ -4,7 +4,12 @@
  */
 package laskarit.ui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 import laskarit.muotoilu.Esitys;
+import laskarit.tehtavat.Tehtava;
+import laskarit.tehtavat.Tehtavatehdas;
 
 /**
  *
@@ -12,14 +17,29 @@ import laskarit.muotoilu.Esitys;
  */
 public class Pelipaneli extends javax.swing.JPanel {
 
-    PeliIkkuna ikkuna;
+    private final PeliIkkuna ikkuna;
+    private final Tehtavatehdas peli;
+    private Tehtava tehtava;
 
-    /**
-     * Creates new form Pelipaneli
-     */
-    public Pelipaneli(PeliIkkuna ikkuna) {
+    private final Timer timerPalaute;
+
+    public Pelipaneli(PeliIkkuna ikkuna, Tehtavatehdas peli) {
         this.ikkuna = ikkuna;
+        this.peli = peli;
         initComponents();
+        labelVaaraVastaus.setVisible(false);
+        labelOikeaVastaus.setVisible(false);
+        timerPalaute = new Timer(1000, new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                poistaPalaute();
+            }
+
+        });
+        timerPalaute.setRepeats(false);
+
+        uusiKysymys();
     }
 
     /**
@@ -36,6 +56,7 @@ public class Pelipaneli extends javax.swing.JPanel {
         labelKysymys = new javax.swing.JLabel();
         panelVaaraVastaus = new javax.swing.JPanel();
         labelVaaraVastaus = new javax.swing.JLabel();
+        labelOikeaVastaus = new javax.swing.JLabel();
         vastauspaneli = new javax.swing.JPanel();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         jLabel1 = new javax.swing.JLabel();
@@ -64,12 +85,18 @@ public class Pelipaneli extends javax.swing.JPanel {
         panelVaaraVastaus.setLayout(new javax.swing.BoxLayout(panelVaaraVastaus, javax.swing.BoxLayout.LINE_AXIS));
 
         labelVaaraVastaus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        labelVaaraVastaus.setForeground(javax.swing.UIManager.getDefaults().getColor("nb.errorForeground"));
+        labelVaaraVastaus.setForeground(new java.awt.Color(255, 0, 0));
         labelVaaraVastaus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelVaaraVastaus.setText("Väärä vastaus!");
+        labelVaaraVastaus.setText("Väärä vastaus :(");
         labelVaaraVastaus.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        labelVaaraVastaus.setPreferredSize(null);
         panelVaaraVastaus.add(labelVaaraVastaus);
+
+        labelOikeaVastaus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labelOikeaVastaus.setForeground(java.awt.Color.green);
+        labelOikeaVastaus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelOikeaVastaus.setText("Oikea vastaus :)");
+        labelOikeaVastaus.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        panelVaaraVastaus.add(labelOikeaVastaus);
 
         add(panelVaaraVastaus);
 
@@ -100,8 +127,10 @@ public class Pelipaneli extends javax.swing.JPanel {
 
     private void tfVastausActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfVastausActionPerformed
         String vastaus = tfVastaus.getText();
-        tfVastaus.setText("");
-        ikkuna.vastausAnnettu(vastaus);
+        if(!"".equals(vastaus)) {
+            tfVastaus.setText("");
+            vastausAnnettu(vastaus);
+        }
     }//GEN-LAST:event_tfVastausActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -112,18 +141,48 @@ public class Pelipaneli extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel kysymyspaneli;
     private javax.swing.JLabel labelKysymys;
+    private javax.swing.JLabel labelOikeaVastaus;
     private javax.swing.JLabel labelVaaraVastaus;
     private javax.swing.JPanel panelVaaraVastaus;
     private javax.swing.JTextField tfVastaus;
     private javax.swing.JPanel vastauspaneli;
     // End of variables declaration//GEN-END:variables
 
-    void uusiKysymys(Esitys kysymys) {
+    private void uusiKysymys() {
+        tehtava = peli.annaTehtava();
         labelVaaraVastaus.setVisible(false);
-        labelKysymys.setText("<html>" + kysymys.toString(null) + "</html>");
+        labelKysymys.setText("<html>" + tehtava.annaKysymys().toString(null) + "</html>");
     }
 
-    void vaaraVastaus() {
-        labelVaaraVastaus.setVisible(true);
+    private void vaaraVastaus() {
+        palaute(false);
     }
+
+    private void oikeaVastaus() {
+        palaute(true);
+        uusiKysymys();
+    }
+
+    private void vastausAnnettu(String vastaus) {
+        if(tehtava.tarkistaVastaus(vastaus)) {
+            oikeaVastaus();
+        }
+        else {
+            vaaraVastaus();
+        }
+
+    }
+
+    private void palaute(boolean oikein) {
+        labelOikeaVastaus.setVisible(oikein);
+        labelVaaraVastaus.setVisible(!oikein);
+        timerPalaute.restart();
+    }
+
+    private void poistaPalaute() {
+        labelOikeaVastaus.setVisible(false);
+        labelVaaraVastaus.setVisible(false);
+    }
+
+
 }
