@@ -5,7 +5,7 @@ import laskarit.muotoilu.Esitys;
 import laskarit.muotoilu.Kokonaisluku;
 
 /**
- *
+ * Tehtava, joka toteuttaa yhteenlaskutehtävän.
  * @author simo
  */
 class Yhteenlaskutehtava implements Tehtava {
