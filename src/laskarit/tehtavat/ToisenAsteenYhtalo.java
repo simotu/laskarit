@@ -38,7 +38,7 @@ public class ToisenAsteenYhtalo implements Tehtavatehdas {
 
     @Override
     public Tehtava annaTehtava() {
-        final Yhtalo yhtalo = arvoYhtalo();
+        final Polynomiyhtalotehtava yhtalo = arvoYhtalo();
         return new Tehtava() {
 
             @Override
@@ -60,7 +60,7 @@ public class ToisenAsteenYhtalo implements Tehtavatehdas {
         };
     }
 
-    private Yhtalo arvoYhtalo() {
+    private Polynomiyhtalotehtava arvoYhtalo() {
         int x1 = arvoJuuri();
         int x2 = arvoJuuri();
 
@@ -77,7 +77,7 @@ public class ToisenAsteenYhtalo implements Tehtavatehdas {
         else
             n = 1;
 
-        return new Yhtalo(a*n, b*n, c*n);
+        return new Polynomiyhtalotehtava(a*n, b*n, c*n);
 
     }
 
@@ -87,59 +87,5 @@ public class ToisenAsteenYhtalo implements Tehtavatehdas {
         else
             return random.nextInt(rajoitus + 1);
     }
-
-    private static class Yhtalo {
-
-        final int a, b, c;
-
-        public Yhtalo(int a, int b, int c) {
-            this.a = a;
-            this.b = b;
-            this.c = c;
-        }
-
-        private Esitys annaEsitys() {
-            Esitys x = new Symboli('x');
-            Esitys poly;
-            poly = annaTermi(a, new Potenssi(x, new Kokonaisluku(2)));
-            if(b != 0) {
-                poly = lisaaTermi(poly, b, x);
-            }
-            if(c != 0) {
-                poly = lisaaPolynomiin(poly, c, new Kokonaisluku(Math.abs(c)));
-            }
-            return new Binaarioperaattori("=", poly, new Kokonaisluku(0));
-        }
-
-        private Esitys lisaaTermi(Esitys poly, int vakio, Esitys muuttujatermi) {
-            if(vakio == 0)
-                return poly;
-            Esitys abs = annaTermi(Math.abs(vakio), muuttujatermi);
-            return lisaaPolynomiin(poly, vakio, abs);
-        }
-
-        private Esitys lisaaPolynomiin(Esitys poly, int vakio, Esitys abs) {
-            if(vakio > 0) {
-                return new Binaarioperaattori("+", poly, abs);
-            }
-            else {
-                return new Binaarioperaattori("-", poly, abs);
-            }
-        }
-
-        private Esitys annaTermi(int vakio, Esitys muuttujatermi) {
-            if(vakio == 1)
-                return muuttujatermi;
-            return new Binaarioperaattori("", new Kokonaisluku(vakio),
-                        muuttujatermi);
-        }
-
-        private boolean onkoJuuri(int x) {
-            return ((a*x*x + b*x + c) == 0);
-        }
-
-
-    }
-
 
 }
