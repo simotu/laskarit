@@ -1,7 +1,6 @@
 package laskarit.tehtavat;
 
 import java.util.Random;
-import laskarit.muotoilu.Binaarioperaattori;
 import laskarit.muotoilu.Esitys;
 import laskarit.muotoilu.Kokonaisluku;
 

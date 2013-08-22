@@ -12,7 +12,7 @@ import laskarit.tehtavat.Tehtava;
 import laskarit.tehtavat.Tehtavatehdas;
 
 /**
- *
+ * Pelipaneli huolehtii pelin käyttöliittymän pyörittämisestä.
  * @author simo
  */
 public class Pelipaneli extends javax.swing.JPanel {
@@ -23,6 +23,11 @@ public class Pelipaneli extends javax.swing.JPanel {
 
     private final Timer timerPalaute;
 
+    /**
+     * Luo pelipanelin
+     * @param ikkuna Ikkuna, jossa pelipaneli sijaitsee.
+     * @param peli Tehtavatehdas, josta uudet kysymykset pyydetään.
+     */
     public Pelipaneli(PeliIkkuna ikkuna, Tehtavatehdas peli) {
         this.ikkuna = ikkuna;
         this.peli = peli;

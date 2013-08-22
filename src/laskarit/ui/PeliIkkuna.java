@@ -5,27 +5,22 @@
 package laskarit.ui;
 
 import laskarit.tehtavat.KaikkiTehtavat;
-import laskarit.tehtavat.Kertolaskarit;
-import laskarit.tehtavat.Tehtava;
 import laskarit.tehtavat.Tehtavatehdas;
-import laskarit.tehtavat.Yhteenlaskarit;
 
 /**
- *
+ * Ohjelman graafisen käyttöliittymän pääikkuna.
+ * 
  * @author simo
  */
 public class PeliIkkuna extends javax.swing.JFrame {
     private Pelipaneli pelipaneli;
-
-    private Tehtavatehdas tehtavat;
-    private Tehtava tehtava;
 
     /**
      * Creates new form PeliIkkuna
      */
     public PeliIkkuna() {
         initComponents();
-        aloitaPeli(new Yhteenlaskarit(10));
+        aloitaPeli(new KaikkiTehtavat());
     }
 
     /**
