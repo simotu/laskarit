@@ -26,6 +26,10 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Laskarit"/>
+    <Property name="autoRequestFocus" type="boolean" value="false"/>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+    </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[500, 300]"/>
     </Property>
@@ -52,13 +56,16 @@
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
   </AuxValues>
 
-  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
-    <Property name="axis" type="int" value="3"/>
-  </Layout>
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="vaihtuvaPaneli">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
 
-      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
     </Container>
   </SubComponents>
 </Form>

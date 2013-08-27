@@ -4,8 +4,16 @@
  */
 package laskarit.ui;
 
+import java.awt.BorderLayout;
+import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 import laskarit.tehtavat.KaikkiTehtavat;
+import laskarit.tehtavat.Kertolaskarit;
+import laskarit.tehtavat.Logaritmilaskarit;
+import laskarit.tehtavat.Potenssilaskarit;
 import laskarit.tehtavat.Tehtavatehdas;
+import laskarit.tehtavat.ToisenAsteenYhtalo;
+import laskarit.tehtavat.Yhteenlaskarit;
 
 /**
  * Ohjelman graafisen käyttöliittymän pääikkuna.
@@ -13,6 +21,18 @@ import laskarit.tehtavat.Tehtavatehdas;
  * @author simo
  */
 public class PeliIkkuna extends javax.swing.JFrame {
+    private final Pelivalinta[] pelit = new Pelivalinta[] {
+        new Pelivalinta("Tosilaskarit", "Kaikenlaisia tehtäviä!", new KaikkiTehtavat()),
+        new Pelivalinta("Yhteenlaskarit", "Helppoja yhteenlaskuharjoituksia", new Yhteenlaskarit(10)),
+        new Pelivalinta("Vaikeat yhteenlaskarit", "Vaikeampia yhteenlaskuharjoituksia", new Yhteenlaskarit(1000)),
+        new Pelivalinta("Kertolaskarit", "Helppoja kertolaskuharjoituksia", new Kertolaskarit(10)),
+        new Pelivalinta("Vaikeat kertolaskarit", "Vaikeampia kertolaskuharjoituksia", new Kertolaskarit(100)),
+        new Pelivalinta("Potenssilaskarit", "Helppoja potenssilaskuja", new Potenssilaskarit(5, 3)),
+        new Pelivalinta("Logaritmilaskarit", "Helppoja potenssiyhtälöharjoituksia", new Logaritmilaskarit(5, 3)),
+        new Pelivalinta("Laskarit^2", "Toisen asteen yhtälöiden harjoituksia", new ToisenAsteenYhtalo(10, true))
+    };
+
+    Valintapaneli<Pelivalinta> valintaPaneli;
     private Pelipaneli pelipaneli;
 
     /**
@@ -20,7 +40,14 @@ public class PeliIkkuna extends javax.swing.JFrame {
      */
     public PeliIkkuna() {
         initComponents();
-        aloitaPeli(new KaikkiTehtavat());
+        valintaPaneli = new Valintapaneli<>(pelit,
+                new Valintakuuntelija<Pelivalinta>() {
+                    @Override
+                    public void valintaTehty(Pelivalinta valinta) {
+                        PeliIkkuna.this.valintaTehty(valinta);
+                    }
+                });
+        naytaValinta();
     }
 
     /**
@@ -39,9 +66,14 @@ public class PeliIkkuna extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Laskarit");
+        setAutoRequestFocus(false);
+        setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(500, 300));
         setResizable(false);
-        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.PAGE_AXIS));
+        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
+
+        vaihtuvaPaneli.setBackground(new java.awt.Color(255, 255, 255));
+        vaihtuvaPaneli.setLayout(new java.awt.BorderLayout());
         getContentPane().add(vaihtuvaPaneli);
 
         menuPeli.setText("Peli");
@@ -113,9 +145,61 @@ public class PeliIkkuna extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void aloitaPeli(Tehtavatehdas peli) {
+        pelipaneli = new Pelipaneli(new Pelikuuntelija() {
+
+            @Override
+            public void peliPaattyi() {
+                naytaValinta();
+            }
+        }, peli);
+        vaihdaPaneli(pelipaneli);
+        pelipaneli.aktivoi();
+    }
+
+    public void valintaTehty(Pelivalinta valinta) {
+        valintaPaneli.deaktivoi();
+        aloitaPeli(valinta.peli);
+    }
+
+    private void naytaValinta() {
+        vaihdaPaneli(valintaPaneli);
+        valintaPaneli.aktivoi();
+    }
+
+    private void vaihdaPaneli(JComponent paneli) {
         vaihtuvaPaneli.removeAll();
-        pelipaneli = new Pelipaneli(this, peli);
-        vaihtuvaPaneli.add(pelipaneli);
+        vaihtuvaPaneli.add(paneli, BorderLayout.CENTER);
+        vaihtuvaPaneli.revalidate();
+    }
+
+    private void naytaVirhe(String virhe, Throwable t) {
+        JOptionPane.showMessageDialog(this, virhe, "Virhe",
+                JOptionPane.ERROR_MESSAGE);
+    }
+
+    private static class Pelivalinta<T> implements Valinta {
+
+        private final String otsikko;
+        private final String selite;
+        private final Tehtavatehdas peli;
+
+        public Pelivalinta(String otsikko, String selite,
+                Tehtavatehdas peli) {
+            this.otsikko = otsikko;
+            this.selite = selite;
+            this.peli = peli;
+        }
+
+        @Override
+        public String annaOtsikko() {
+            return otsikko;
+        }
+
+        @Override
+        public String annaSelite() {
+            return selite;
+        }
+        
     }
 
 }

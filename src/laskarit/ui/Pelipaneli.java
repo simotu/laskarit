@@ -4,6 +4,7 @@
  */
 package laskarit.ui;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
@@ -17,7 +18,7 @@ import laskarit.tehtavat.Tehtavatehdas;
  */
 public class Pelipaneli extends javax.swing.JPanel {
 
-    private final PeliIkkuna ikkuna;
+    private final Pelikuuntelija kuuntelija;
     private final Tehtavatehdas peli;
     private Tehtava tehtava;
 
@@ -28,8 +29,8 @@ public class Pelipaneli extends javax.swing.JPanel {
      * @param ikkuna Ikkuna, jossa pelipaneli sijaitsee.
      * @param peli Tehtavatehdas, josta uudet kysymykset pyydetään.
      */
-    public Pelipaneli(PeliIkkuna ikkuna, Tehtavatehdas peli) {
-        this.ikkuna = ikkuna;
+    public Pelipaneli(Pelikuuntelija kuuntelija, Tehtavatehdas peli) {
+        this.kuuntelija = kuuntelija;
         this.peli = peli;
         initComponents();
         labelVaaraVastaus.setVisible(false);
@@ -56,6 +57,9 @@ public class Pelipaneli extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ylapaneli = new javax.swing.JPanel();
+        jbPalaa = new javax.swing.JButton();
+        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 32767));
         kysymyspaneli = new javax.swing.JPanel();
         labelKysymys = new javax.swing.JLabel();
@@ -69,10 +73,40 @@ public class Pelipaneli extends javax.swing.JPanel {
         tfVastaus = new javax.swing.JTextField();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setOpaque(false);
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
+
+        ylapaneli.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 1, 2, 1));
+        ylapaneli.setMinimumSize(new java.awt.Dimension(150, 25));
+        ylapaneli.setOpaque(false);
+        ylapaneli.setLayout(new javax.swing.BoxLayout(ylapaneli, javax.swing.BoxLayout.LINE_AXIS));
+
+        jbPalaa.setBackground(new java.awt.Color(255, 255, 255));
+        jbPalaa.setText("Takaisin valintaan");
+        jbPalaa.setFocusable(false);
+        jbPalaa.setRolloverEnabled(false);
+        jbPalaa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jbPalaaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbPalaaMouseExited(evt);
+            }
+        });
+        jbPalaa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbPalaaActionPerformed(evt);
+            }
+        });
+        ylapaneli.add(jbPalaa);
+        ylapaneli.add(filler5);
+
+        add(ylapaneli);
         add(filler1);
 
         kysymyspaneli.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        kysymyspaneli.setOpaque(false);
         kysymyspaneli.setLayout(new javax.swing.BoxLayout(kysymyspaneli, javax.swing.BoxLayout.LINE_AXIS));
 
         labelKysymys.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -86,6 +120,7 @@ public class Pelipaneli extends javax.swing.JPanel {
         panelVaaraVastaus.setMaximumSize(new java.awt.Dimension(2147483647, 50));
         panelVaaraVastaus.setMinimumSize(new java.awt.Dimension(115, 50));
         panelVaaraVastaus.setName(""); // NOI18N
+        panelVaaraVastaus.setOpaque(false);
         panelVaaraVastaus.setPreferredSize(new java.awt.Dimension(400, 50));
         panelVaaraVastaus.setLayout(new javax.swing.BoxLayout(panelVaaraVastaus, javax.swing.BoxLayout.LINE_AXIS));
 
@@ -107,6 +142,7 @@ public class Pelipaneli extends javax.swing.JPanel {
 
         vastauspaneli.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 1, 2, 1));
         vastauspaneli.setMinimumSize(new java.awt.Dimension(150, 25));
+        vastauspaneli.setOpaque(false);
         vastauspaneli.setLayout(new javax.swing.BoxLayout(vastauspaneli, javax.swing.BoxLayout.LINE_AXIS));
         vastauspaneli.add(filler3);
 
@@ -138,12 +174,26 @@ public class Pelipaneli extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tfVastausActionPerformed
 
+    private void jbPalaaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbPalaaMouseEntered
+        jbPalaa.setBackground(Color.GRAY);
+    }//GEN-LAST:event_jbPalaaMouseEntered
+
+    private void jbPalaaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbPalaaMouseExited
+        jbPalaa.setBackground(Color.WHITE);
+    }//GEN-LAST:event_jbPalaaMouseExited
+
+    private void jbPalaaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPalaaActionPerformed
+        kuuntelija.peliPaattyi();
+    }//GEN-LAST:event_jbPalaaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
+    private javax.swing.Box.Filler filler5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jbPalaa;
     private javax.swing.JPanel kysymyspaneli;
     private javax.swing.JLabel labelKysymys;
     private javax.swing.JLabel labelOikeaVastaus;
@@ -151,6 +201,7 @@ public class Pelipaneli extends javax.swing.JPanel {
     private javax.swing.JPanel panelVaaraVastaus;
     private javax.swing.JTextField tfVastaus;
     private javax.swing.JPanel vastauspaneli;
+    private javax.swing.JPanel ylapaneli;
     // End of variables declaration//GEN-END:variables
 
     private void uusiKysymys() {
@@ -187,6 +238,10 @@ public class Pelipaneli extends javax.swing.JPanel {
     private void poistaPalaute() {
         labelOikeaVastaus.setVisible(false);
         labelVaaraVastaus.setVisible(false);
+    }
+
+    void aktivoi() {
+        tfVastaus.requestFocus();
     }
 
 
