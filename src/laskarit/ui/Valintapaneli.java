@@ -15,11 +15,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import javax.swing.AbstractListModel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
-import javax.swing.ListModel;
 import javax.swing.Timer;
 
 /**
@@ -161,7 +159,7 @@ public class Valintapaneli<E extends Valinta> extends javax.swing.JPanel {
             g.setFont(otsikkoFont);
             FontMetrics fm = g.getFontMetrics();
             double time = System.currentTimeMillis();
-            int x = (int)(Math.sin(Math.PI * (double)time / 2000 + (double)index * Math.PI / 10)*10);
+            int x = (int)Math.round((Math.sin(Math.PI * (double)time / 2000 + (double)index * Math.PI / 5)*5));
             g.drawString(value.annaOtsikko(), x + 25, h - 5);
             g.setFont(seliteFont);
             g.drawString(value.annaSelite(), 200, h - 5);
