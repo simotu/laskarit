@@ -5,6 +5,7 @@ import laskarit.muotoilu.Esitys;
 import laskarit.muotoilu.Kokonaisluku;
 import laskarit.muotoilu.Potenssi;
 import laskarit.muotoilu.Symboli;
+import laskarit.muotoilu.Tyhja;
 
 /**
  * Luokka, joka edustaa yksittäistä polynomiyhtälötehtävää,
@@ -76,8 +77,10 @@ class Polynomiyhtalotehtava {
     }
 
     private Esitys annaTermi(int vakio, Esitys muuttujatermi) {
-        if (vakio == 1)
+        if(vakio == 1)
             return muuttujatermi;
+        if(vakio == -1)
+            return new Binaarioperaattori("-", new Tyhja(), muuttujatermi);
         return new Binaarioperaattori("", new Kokonaisluku(vakio), muuttujatermi);
     }
 
