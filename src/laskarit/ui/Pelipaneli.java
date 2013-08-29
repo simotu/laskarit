@@ -8,7 +8,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
-import laskarit.muotoilu.Esitys;
+import laskarit.esitys.Esitys;
 import laskarit.tehtavat.Tehtava;
 import laskarit.tehtavat.Tehtavatehdas;
 

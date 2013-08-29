@@ -1,13 +1,18 @@
-package laskarit.muotoilu;
+package laskarit.esitys;
 
 /**
- * Esitys yhdistää kaksi esitystä sellaisenaan.
+ * Esitys, joka yhdistää useita esityksiä peräkkäin.
  * @author simo
  */
 public class Yhdiste implements Esitys {
 
     private final Esitys[] yhdistettavat;
 
+    /**
+     * Luo uuden esityksen, joka on yhdiste esityksistä
+     * <code>yhdistettavat[0], ..., yhdistettavat[yhdistettavat.length-1]</code>
+     * @param yhdistettavat
+     */
     public Yhdiste(Esitys... yhdistettavat) {
         this.yhdistettavat = yhdistettavat;
     }

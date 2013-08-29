@@ -1,8 +1,8 @@
 package laskarit.tehtavat;
 
-import laskarit.muotoilu.Binaarioperaattori;
-import laskarit.muotoilu.Esitys;
-import laskarit.muotoilu.Kokonaisluku;
+import laskarit.esitys.Binaarioperaattori;
+import laskarit.esitys.Esitys;
+import laskarit.esitys.Kokonaisluku;
 
 /**
  * Tehtava, joka toteuttaa yhteenlaskutehtävän.

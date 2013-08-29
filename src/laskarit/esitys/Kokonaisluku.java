@@ -1,7 +1,7 @@
-package laskarit.muotoilu;
+package laskarit.esitys;
 
 /**
- *
+ * Esitys, joka kuvaa kokonaislukua.
  * @author simo
  */
 public class Kokonaisluku implements Esitys {
@@ -9,6 +9,7 @@ public class Kokonaisluku implements Esitys {
     private final int luku;
 
     /**
+     * Luo esityksen, joka kuvaa kokonaislukua <code>luku</code>.
      * @param luku Luku, jota tämä instanssi kuvaa.
      */
     public Kokonaisluku(int luku) {

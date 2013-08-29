@@ -1,8 +1,8 @@
 package laskarit.tehtavat;
 
-import laskarit.muotoilu.Esitys;
-import laskarit.muotoilu.Kokonaisluku;
-import laskarit.muotoilu.Potenssi;
+import laskarit.esitys.Esitys;
+import laskarit.esitys.Kokonaisluku;
+import laskarit.esitys.Potenssi;
 
 /**
  * Tehtava, joka toteuttaa potenssilaskutehtävän.

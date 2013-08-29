@@ -1,4 +1,4 @@
-package laskarit.muotoilu;
+package laskarit.esitys;
 
 /**
  * Tyhjä esitys toimii esimerkiksi täytteenä kompleksisissa
@@ -8,6 +8,9 @@ package laskarit.muotoilu;
  */
 public class Tyhja implements Esitys {
 
+    /**
+     * Luo tyhjän esityksen.
+     */
     public Tyhja() {
     }
 

@@ -1,39 +1,38 @@
-package laskarit.muotoilu;
+package laskarit.esitys;
 
 /**
  * Binaarioperaattori on Esitys, joka kuvaa binääristä operaattoria,
  * jossa annettu symboli yhdistää kahta Esitys-instanssia.
- * Esityksiä voi listata enemmänkin, jolloin esityksen katsotaan kuvaavan
- * liitännäistä operaattoria.
  *
  * @author simo
  */
 public class Binaarioperaattori implements Esitys {
 
-    private final Esitys eka;
+    private final Esitys vasen;
 
-    private final Esitys toka;
+    private final Esitys oikea;
     
     private final String operaattorisymboli;
 
     /**
-     *
-     * @param eka Toinen parametri
-     * @param toka Ensimmäinen parametri
+     * Luo binäärioperaattorin, jonka muoto on
+     * <code>[vasen][operaattorisymboli][oikea]</code>.
+     * @param vasen Toinen parametri
+     * @param oikea Ensimmäinen parametri
      * @param operaattorisymboli Operaation symboli
      */
-    public Binaarioperaattori(String operaattorisymboli, Esitys eka, Esitys toka) {
-        this.eka = eka;
-        this.toka = toka;
+    public Binaarioperaattori(String operaattorisymboli, Esitys vasen, Esitys oikea) {
+        this.vasen = vasen;
+        this.oikea = oikea;
         this.operaattorisymboli = operaattorisymboli;
     }
     
     @Override
     public String toString(Esitys context) {
         return new StringBuilder()
-                .append(eka.toString(context))
+                .append(vasen.toString(context))
                 .append(operaattorisymboli)
-                .append(toka.toString(context))
+                .append(oikea.toString(context))
                 .toString();
     }
     

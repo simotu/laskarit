@@ -2,13 +2,13 @@ package laskarit.tehtavat;
 
 import java.util.Arrays;
 import java.util.Random;
-import laskarit.muotoilu.Binaarioperaattori;
-import laskarit.muotoilu.Esitys;
-import laskarit.muotoilu.Kokonaisluku;
-import laskarit.muotoilu.Potenssi;
-import laskarit.muotoilu.Symboli;
-import laskarit.muotoilu.Teksti;
-import laskarit.muotoilu.Yhdiste;
+import laskarit.esitys.Binaarioperaattori;
+import laskarit.esitys.Esitys;
+import laskarit.esitys.Kokonaisluku;
+import laskarit.esitys.Potenssi;
+import laskarit.esitys.Symboli;
+import laskarit.esitys.Teksti;
+import laskarit.esitys.Yhdiste;
 
 /**
  * Tehtävä, jossa ratkotaan toisen asteen yhtälön juuria.

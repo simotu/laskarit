@@ -1,4 +1,4 @@
-package laskarit.muotoilu;
+package laskarit.esitys;
 
 /**
  * Esitys, joka kuvaa yhden merkin symbolia esimerkiksi muuttuja-
@@ -9,6 +9,10 @@ public class Symboli implements Esitys {
 
     private final char symboli;
 
+    /**
+     * Luo symbolin <code>symboli</code> esityksen.
+     * @param symboli
+     */
     public Symboli(char symboli) {
         this.symboli = symboli;
     }

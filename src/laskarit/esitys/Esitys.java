@@ -1,7 +1,8 @@
-package laskarit.muotoilu;
+package laskarit.esitys;
 
 /**
- *
+ * Esitys-rajapinta määrittää strukturoidun esityksen, joka voidaan
+ * näyttää eri muodoissa.
  * @author simo
  */
 public interface Esitys {

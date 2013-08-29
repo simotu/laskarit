@@ -1,5 +1,8 @@
 package laskarit.muotoilu;
 
+import laskarit.esitys.Potenssi;
+import laskarit.esitys.Symboli;
+import laskarit.esitys.Kokonaisluku;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

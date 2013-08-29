@@ -1,6 +1,6 @@
 package laskarit.tehtavat;
 
-import laskarit.muotoilu.Esitys;
+import laskarit.esitys.Esitys;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

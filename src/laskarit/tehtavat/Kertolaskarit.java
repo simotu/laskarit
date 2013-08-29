@@ -1,9 +1,9 @@
 package laskarit.tehtavat;
 
 import java.util.Random;
-import laskarit.muotoilu.Binaarioperaattori;
-import laskarit.muotoilu.Esitys;
-import laskarit.muotoilu.Kokonaisluku;
+import laskarit.esitys.Binaarioperaattori;
+import laskarit.esitys.Esitys;
+import laskarit.esitys.Kokonaisluku;
 
 /**
  * Tehtävätehdas, joka tuottaa kertolaskuharjoituksia.

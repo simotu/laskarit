@@ -1,4 +1,4 @@
-package laskarit.muotoilu;
+package laskarit.esitys;
 
 /**
  * Teksti kuvaa yksinkertaista merkkijonoa.
@@ -9,7 +9,7 @@ public class Teksti implements Esitys {
     private final String teksti;
 
     /**
-     * Luo esityksen annetulla tekstillä.
+     * Luo tekstin <code>teksti</code> esityksen.
      * @param teksti Teksti, jota esitys kuvaa.
      */
     public Teksti(String teksti) {

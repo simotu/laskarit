@@ -1,6 +1,6 @@
 package laskarit.tehtavat;
 
-import laskarit.muotoilu.Esitys;
+import laskarit.esitys.Esitys;
 
 /**
  * Tehtava-luokka kuvaa yhtä laadittua tehtävää, jolla on kysymys ja

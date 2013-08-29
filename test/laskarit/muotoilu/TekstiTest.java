@@ -1,5 +1,6 @@
 package laskarit.muotoilu;
 
+import laskarit.esitys.Teksti;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

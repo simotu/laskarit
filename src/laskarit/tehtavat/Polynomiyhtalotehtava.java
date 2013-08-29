@@ -1,11 +1,11 @@
 package laskarit.tehtavat;
 
-import laskarit.muotoilu.Binaarioperaattori;
-import laskarit.muotoilu.Esitys;
-import laskarit.muotoilu.Kokonaisluku;
-import laskarit.muotoilu.Potenssi;
-import laskarit.muotoilu.Symboli;
-import laskarit.muotoilu.Tyhja;
+import laskarit.esitys.Binaarioperaattori;
+import laskarit.esitys.Esitys;
+import laskarit.esitys.Kokonaisluku;
+import laskarit.esitys.Potenssi;
+import laskarit.esitys.Symboli;
+import laskarit.esitys.Tyhja;
 
 /**
  * Luokka, joka edustaa yksittäistä polynomiyhtälötehtävää,

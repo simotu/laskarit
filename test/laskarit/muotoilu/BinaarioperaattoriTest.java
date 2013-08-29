@@ -1,5 +1,7 @@
 package laskarit.muotoilu;
 
+import laskarit.esitys.Teksti;
+import laskarit.esitys.Binaarioperaattori;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

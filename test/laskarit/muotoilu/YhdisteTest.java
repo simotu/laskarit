@@ -1,5 +1,8 @@
 package laskarit.muotoilu;
 
+import laskarit.esitys.Teksti;
+import laskarit.esitys.Yhdiste;
+import laskarit.esitys.Kokonaisluku;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

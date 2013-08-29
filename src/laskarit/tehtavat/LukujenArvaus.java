@@ -1,8 +1,8 @@
 package laskarit.tehtavat;
 
 import java.util.Random;
-import laskarit.muotoilu.Esitys;
-import laskarit.muotoilu.Teksti;
+import laskarit.esitys.Esitys;
+import laskarit.esitys.Teksti;
 
 /**
  * Tehtävä, jossa arvaillaan lukua.
