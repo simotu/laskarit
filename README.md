@@ -1,4 +1,0 @@
-laskarit
-========
-
-Laskari - Päässälaskutaidon harjoitusohjelma
